@@ -1,6 +1,6 @@
 #Pegando os dados
 
-with open("input.txt") as file:
+with open("./day2/input.txt") as file:
     rounds = [i for i in file.read().split("\n") ]
     
 #Jogadas possíveis

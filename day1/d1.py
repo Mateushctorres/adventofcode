@@ -1,7 +1,7 @@
 def main():
     calories = []
     elf_calories = []
-    with open("input.txt", "r") as f:
+    with open("./day1/input.txt", "r") as f:
         for line in f:
             if line.strip() == "":
                 calories.append(sum(elf_calories))
