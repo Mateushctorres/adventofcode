@@ -16,7 +16,7 @@ soma = 0
 for rucksack in data:
     metade = len(rucksack)//2 # 2 barras pq só uma vem um double e quero int
     
-    #set divide cada um em susas letras individuais
+    #set divide cada um em suas letras únicas e individuais
     esquerda = set(rucksack[:metade]) #começo até metade
     direita = set(rucksack[metade:]) #metade até final
     
