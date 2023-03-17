@@ -9,7 +9,7 @@ pares = 0
 for section in data:
     primeiro, segundo = section. split(",") #divide na virgula entre os 2
     
-    #separa os 2 núMEros dos pares a partir do -
+    #separa os 2 números dos pares a partir do -
     primeiro = [int(i) for i in primeiro.split("-")]
     segundo = [int(i) for i in segundo.split("-")]
     
