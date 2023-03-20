@@ -18,14 +18,7 @@ def peek(stack):
 def inicializa(stack, valores):
     for c in valores:
         push( stack, int(c) )
-        
-#Para realizar as operações descritas no input
-def move( origem, destino, qtde):
-    for i in range(qtde):
-        val = pop(origem)
-        push(destino, val)
 
-#Para realizar as operações descritas no input
 def movethree( origem, destino, qtde):
     temp = []
     for i in range(qtde):
@@ -57,10 +50,11 @@ for instrucao in instrucoes:
     qtde = int(instrucao[0])
     origem = int(instrucao[1])-1 #-1 pq começa do 0
     destino = int(instrucao[2])-1
-    instrucao = move(pilhas[origem], pilhas[destino], qtde)
+    instrucao = movethree(pilhas[origem], pilhas[destino], qtde)
 
 
-#   ---   RESPOSTA PARTE 1   ---   #
+#   ---   RESPOSTA PARTE 2   ---   #
 for p in pilhas:
-    print("Pt1: ",p[-1])
+    print("Pt2: ",p[-1])
     
+
