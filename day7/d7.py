@@ -56,3 +56,16 @@ for diretorio in diretorios:
         total += diretorios[diretorio]
         
 print("Pt1: ", total)
+
+# ----------------  Parte 2  ------------------
+
+limite = 30000000 - (70000000 - diretorios["/home"])
+diretorios_suf = []
+
+for diretorio in diretorios:
+    if limite <= diretorios[diretorio]:
+        diretorios_suf.append(diretorios[diretorio])
+    
+    correto = min(diretorios_suf)
+    
+print("Pt2: ", correto)
