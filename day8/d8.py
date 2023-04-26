@@ -1,46 +1,47 @@
 
 with open("./day8/input.txt") as file:
-    data = [row.strip() for row in file.readlines()]
+    data = [linha.strip() for linha in file.readlines
+    ()]
 
-ROWS = len(data)            # num of rows
-COLUMNS = len(data[0])      # num of columns
+LINHAS = len(data)            # num de linhas
+COLUNAS = len(data[0])      # num of colunas
 
-edges = (ROWS*2) + ((COLUMNS-2)*2)      # all trees on edges are visible
-total = edges                           # add edges to total visible trees
-scores = []                             # track the scenic scores
+bordas = (LINHAS*2) + ((COLUNAS-2)*2)      # todas as árvores nas bordas são visíveis
+total = bordas                           # add as de borda ao total de visíveis
+scores = []                             # total de centro
 
-# Iterate through trees not on edges
-for row in range(1, ROWS-1):
-    for col in range(1, COLUMNS-1):
-        tree = data[row][col]           # Tree that we are looking at
+# Iterar pelas árvores que não estão nas bordas
+for linha in range(1, LINHAS-1): 
+    for col in range(1, COLUNAS-1):
+        arvore = data[linha][col]           # árvore procurada
 
-        # Get all horizontal & vertical trees
-        left = [data[row][col-i] for i in range(1, col+1)]
-        right = [data[row][col+i] for i in range(1, COLUMNS-col)]
-        up = [data[row-i][col] for i in range(1, row+1)]
-        down = [data[row+i][col] for i in range(1, ROWS-row)]
+        # Pegar todas as arvores horizontais e verticais
+        esquerda = [data[linha][col-i] for i in range(1, col+1)]
+        direita = [data[linha][col+i] for i in range(1, COLUNAS-col)]
+        cima = [data[linha-i][col] for i in range(1, linha+1)]
+        baixo = [data[linha+i][col] for i in range(1, LINHAS-linha)]
 
-        # === PART 1 ===
-        # Check if tallest tree on all sides blocks our view of the tree
-        if max(left)<tree or max(right)<tree or max(up)<tree or max(down)<tree:
+        # === PARTE 1 ===
+        # Checar se a árvore mais alta de todos os lados bloqueia a vista da árvore
+        if max(esquerda)<arvore or max(direita)<arvore or max(cima)<arvore or max(baixo)<arvore:
             total += 1
 
-        # === PART 2 ===
+        # === PARTE 2 ===
         
-        # Finding scenic score
+        # Achando o Score
         score = 1
-        for lst in (left, right, up, down):
-            tracker = 0
+        for lst in (esquerda, direita, cima, baixo):
+            track = 0
             for i in range(len(lst)):
-                if lst[i] < tree:
-                    tracker += 1
-                elif lst[i] >= tree:
-                    tracker += 1
+                if lst[i] < arvore:
+                    track += 1
+                elif lst[i] >= arvore:
+                    track += 1
                     break
             
-            score *= tracker
+            score *= track
 
         scores.append(score)
 
-print("Answer to part 1:", total)
-print("Answer to part 2:", max(scores))
+print("Pt1: ", total)
+print("Pt2: ", max(scores))
